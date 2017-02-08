@@ -12,9 +12,6 @@ var Stack = function() {
   };
 
   someInstance.pop = function() {
-    if (size === 0) {
-      return; 
-    }
     var popped = someInstance[size - 1];
     delete someInstance[size - 1];
     size--;
@@ -22,6 +19,9 @@ var Stack = function() {
   };
 
   someInstance.size = function() {
+    if (size < 0) {
+      return 0;
+    }
     return size;
   };
 
