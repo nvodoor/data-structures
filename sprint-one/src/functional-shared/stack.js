@@ -1,8 +1,42 @@
 var Stack = function() {
-  // Hey! Rewrite in the new style. Your code will wind up looking very similar,
-  // but try not not reference your old code in writing the new style.
+  var someInstance = {};
+
+  someInstance.length = 0;
+
+  extend(someInstance, stackMethods);
+
+  return someInstance;
+};
+
+var extend = function(to, from) {
+  for (var key in from) {
+    to[key] = from[key];
+  }
 };
 
 var stackMethods = {};
 
+stackMethods.push = function(value) {
+  console.log(this);
+  this.length += 1;
+};
+
+stackMethods.pop = function() {
+  this.length -= 1;
+};
+
+stackMethods.size = function() {
+  return this.length;
+};
+
+
+
+
+// stackMethods._count = function(bool) {
+//   if (bool) {
+//     this.length++;
+//   } else {
+//     this.length--;
+//   }
+// };
 
