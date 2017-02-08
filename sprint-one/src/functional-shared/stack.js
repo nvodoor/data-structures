@@ -3,40 +3,29 @@ var Stack = function() {
 
   someInstance.length = 0;
 
-  extend(someInstance, stackMethods);
+  _.extend(someInstance, stackMethods);
 
   return someInstance;
-};
-
-var extend = function(to, from) {
-  for (var key in from) {
-    to[key] = from[key];
-  }
 };
 
 var stackMethods = {};
 
 stackMethods.push = function(value) {
-  console.log(this);
-  this.length += 1;
+  this[this.length] = value;
+  this.length++;
 };
 
 stackMethods.pop = function() {
-  this.length -= 1;
+  var popped = this[this.length - 1];
+  delete this[this.length - 1];
+  this.length--;
+  return popped;
 };
 
 stackMethods.size = function() {
+  if (this.length < 0) {
+    return 0;
+  }
   return this.length;
 };
-
-
-
-
-// stackMethods._count = function(bool) {
-//   if (bool) {
-//     this.length++;
-//   } else {
-//     this.length--;
-//   }
-// };
 
