@@ -2,7 +2,6 @@ var Queue = function() {
   // assign someInstance to Object.create(queueMethods)
   // someInstance.length = 0
   var someInstance = Object.create(queueMethods);
-  console.log(someInstance);
 
   someInstance.length = 0;
 
