@@ -21,6 +21,10 @@ describe('linkedList', function() {
     expect(linkedList.tail.value).to.equal(4);
     linkedList.addToTail(5);
     expect(linkedList.tail.value).to.equal(5);
+    linkedList.addToTail(6);
+    expect(linkedList.tail.value).to.equal(6);    
+    linkedList.addToTail(7);
+    expect(linkedList.tail.value).to.equal(7);
   });
 
   it('should remove the head from the list when removeHead is called', function() {
@@ -51,5 +55,13 @@ describe('linkedList', function() {
     expect(linkedList.contains(4)).to.equal(false);
   });
 
-  // add more tests here to test the functionality of linkedList
+  it('Should link to next node', function() {
+    linkedList.addToTail(1);
+    linkedList.addToTail(2);
+    linkedList.addToTail(3);
+    expect(linkedList.tail.next).to.equal(null);
+    expect(LinkedList.head.next).to.equal(LinkedList.tail.value);
+  });
+
+
 });
