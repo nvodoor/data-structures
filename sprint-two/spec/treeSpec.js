@@ -41,4 +41,13 @@ describe('tree', function() {
     expect(tree.contains(8)).to.equal(true);
   });
 
+  it('should be able to correctly detect deeply nested children', function() {
+    tree.addChild(5);
+    tree.children[0].addChild(6);
+    tree.children[0].children[0].addChild(6);
+    tree.children[0].children[0].children[0].addChild(6);
+    tree.children[0].children[0].children[0].children[0].addChild(10);
+    expect(tree.contains(10)).to.equal(true);
+  });
+
 });
