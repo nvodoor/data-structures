@@ -58,9 +58,8 @@ describe('linkedList', function() {
   it('Should link to next node', function() {
     linkedList.addToTail(1);
     linkedList.addToTail(2);
-    linkedList.addToTail(3);
     expect(linkedList.tail.next).to.equal(null);
-    expect(LinkedList.head.next).to.equal(LinkedList.tail.value);
+    expect(linkedList.head.next.value).to.equal(linkedList.tail.value);
   });
 
 
