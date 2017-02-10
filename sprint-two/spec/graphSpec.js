@@ -57,7 +57,6 @@ describe('graph', function() {
   it('should execute a callback on each node in the graph', function() {
     var connectToFive = function(item) {
       graph.addEdge(item, 5);
-      console.log(graph);
     };
     graph.addNode(5);
     graph.addNode(2);
@@ -74,7 +73,6 @@ describe('graph', function() {
   it('should check edges for a symmetrical relationship', function() {
     var connectToFive = function(item) {
       graph.addEdge(item, 5);
-      console.log(graph);
     };
     graph.addNode(5);
     graph.addNode(2);
