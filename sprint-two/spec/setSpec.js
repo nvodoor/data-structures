@@ -27,7 +27,6 @@ describe('set', function() {
   it('adding same value twice should not increase size', function() {
     set.add('Mel Gibson');
     set.add('Mel Gibson');
-    console.log(set);
     expect(set.length).to.equal(1);
   });
 
