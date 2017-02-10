@@ -11,14 +11,14 @@ HashTable.prototype.insert = function(k, v) {
     this._limit = 16;
   }
 
-  var index = this.getIndexBelowMaxForKey(k, this._limit);
+  var index = getIndexBelowMaxForKey(k, this._limit);
   this._length++;
-  this._storage.set(index, v, this._limit);
+  this._storage.set(index, k, v, this._limit);
 };
 
 HashTable.prototype.retrieve = function(k) {
-  var index = this.getIndexBelowMaxForKey(k, this._limit);
-  return this._storage.get(index);
+  var index = getIndexBelowMaxForKey(k, this._limit);
+  return this._storage.get(index, k);
 };
 
 HashTable.prototype.remove = function(k) {
@@ -26,7 +26,7 @@ HashTable.prototype.remove = function(k) {
     this._limit = 8;
   }
   
-  var index = this.getIndexBelowMaxForKey(k, this._limit);
+  var index = getIndexBelowMaxForKey(k, this._limit);
   var self = this;
   self._storage.each(function(value, i, collection) {
     if (index === i) {
@@ -34,16 +34,6 @@ HashTable.prototype.remove = function(k) {
       self._length--;
     }
   });
-};
-
-HashTable.prototype.getIndexBelowMaxForKey = function(str, max) {
-  var hash = 0;
-  for (var i = 0; i < str.length; i++) {
-    hash = (hash << 5) + hash + str.charCodeAt(i);
-    hash = hash & hash; // Convert to 32bit integer
-    hash = Math.abs(hash);
-  }
-  return hash % max;
 };
 
 

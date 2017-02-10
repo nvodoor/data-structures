@@ -1,6 +1,9 @@
 /*
  ********** NOTE: **********
  * Do not edit this code unless you see a bug!
+
+ Edited .get and .set to reflect bugs when returning colliding values
+ Edited .set to reflect that limits were not getting properly changed.
  */
 
 
@@ -15,13 +18,29 @@ var LimitedArray = function(limit) {
   var storage = [];
 
   var limitedArray = {};
-  limitedArray.get = function(index) {
+  limitedArray.get = function(index, key) {
     checkLimit(index);
-    return storage[index];
+
+    if (!storage[index]) {
+      return;
+    }
+    return storage[index].reduce(function(acc, keyValue) {
+      if (key === keyValue[0]) {
+        acc = keyValue[1];
+      }
+      return acc;
+    }, '');
   };
-  limitedArray.set = function(index, value, limit) {
+  limitedArray.set = function(index, key, value, limit) {
     checkLimit(index, limit);
-    storage[index] = value;
+
+    if (!storage[index]) {
+      storage[index] = [];
+      storage[index].push([key, value]);
+    } else {
+      storage[index].push([key, value]);
+    }
+
   };
   limitedArray.each = function(callback) {
     for (var i = 0; i < storage.length; i++) {
