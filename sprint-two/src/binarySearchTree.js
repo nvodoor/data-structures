@@ -15,22 +15,29 @@ BinarySearchTree.prototype.right = function right() {
 BinarySearchTree.prototype.insert = function insert(nodeValue) {
   var node = new Node(nodeValue);
 
-  // set current to this.value
-  // while true
-    // if node.value < current.value
-      // if current.left is null
-        // current.left is node
-        // return
-      // else 
-        // current is current.left
+  var current = this;
+  var loop = true;
 
-    // if node.value > current.value
-      // if current.right is null
-        // current.right is node
-          // return 
-      // else 
-        // current = current.right
-
+  while (loop) {
+    console.log(current, this);
+    if (node.value < current.value) {
+      if (!current.left) {
+        current.left = node;
+        loop = false;
+      } else {
+        current = current.left;
+      }
+    } else if (node.value > current.value) {
+      if (!current.right) {
+        current.right = node;
+        loop = false;
+      } else {
+        current = current.right;
+      }
+    } else {
+      loop = false;
+    }
+  }
 };
 
 BinarySearchTree.prototype.contains = function contains() {
