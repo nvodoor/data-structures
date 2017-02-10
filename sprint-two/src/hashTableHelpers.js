@@ -19,8 +19,8 @@ var LimitedArray = function(limit) {
     checkLimit(index);
     return storage[index];
   };
-  limitedArray.set = function(index, value) {
-    checkLimit(index);
+  limitedArray.set = function(index, value, limit) {
+    checkLimit(index, limit);
     storage[index] = value;
   };
   limitedArray.each = function(callback) {
@@ -29,7 +29,7 @@ var LimitedArray = function(limit) {
     }
   };
 
-  var checkLimit = function(index) {
+  var checkLimit = function(index, limit) {
     if (typeof index !== 'number') {
       throw new Error('setter requires a numeric index for its first argument');
     }

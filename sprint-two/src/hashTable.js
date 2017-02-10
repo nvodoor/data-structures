@@ -7,13 +7,13 @@ var HashTable = function() {
 };
 
 HashTable.prototype.insert = function(k, v) {
+  if (this._length >= 6) {
+    this._limit = 16;
+  }
+
   var index = this.getIndexBelowMaxForKey(k, this._limit);
   this._length++;
-  if (this._length >= (this._limit * .75)) {
-    this._limit *= 2;
-    console.log(this._limit);
-  }
-  this._storage.set(index, v);
+  this._storage.set(index, v, this._limit);
 };
 
 HashTable.prototype.retrieve = function(k) {
@@ -22,6 +22,10 @@ HashTable.prototype.retrieve = function(k) {
 };
 
 HashTable.prototype.remove = function(k) {
+  if (this._length < 6) {
+    this._limit = 8;
+  }
+  
   var index = this.getIndexBelowMaxForKey(k, this._limit);
   var self = this;
   self._storage.each(function(value, i, collection) {
