@@ -41,7 +41,18 @@ BinarySearchTree.prototype.insert = function insert(nodeValue) {
 };
 
 BinarySearchTree.prototype.contains = function contains() {
-
+  // current is set to this
+  // loop = true
+  // while loop is true
+    // if value !== current.value
+      //if value > current.value && current.right !== null
+        // current = current.right
+      // else if value !== current.value && value < current.value && current.left !== null 
+        // current = current.left
+      // else 
+        // return false 
+    // else 
+      // return true;
 };
 
 BinarySearchTree.prototype.depthFirstLog = function depthFirstLog() {
