@@ -19,7 +19,6 @@ BinarySearchTree.prototype.insert = function insert(nodeValue) {
   var loop = true;
 
   while (loop) {
-    console.log(current, this);
     if (node.value < current.value) {
       if (!current.left) {
         current.left = node;
@@ -41,19 +40,6 @@ BinarySearchTree.prototype.insert = function insert(nodeValue) {
 };
 
 BinarySearchTree.prototype.contains = function contains(value) {
-  // current is set to this
-  // loop = true
-  // while loop is true
-    // if value !== current.value
-      //if value > current.value && current.right !== null
-        // current = current.right
-      // else if value !== current.value && value < current.value && current.left !== null 
-        // current = current.left
-      // else 
-        // return false 
-    // else 
-      // return true;
-
   var current = this;
   var loop = true;
 
@@ -72,8 +58,20 @@ BinarySearchTree.prototype.contains = function contains(value) {
   }
 };
 
-BinarySearchTree.prototype.depthFirstLog = function depthFirstLog() {
+BinarySearchTree.prototype.depthFirstLog = function depthFirstLog(cb, node) {
+  var loop = true;
+  node = node || this;
 
+  cb(node);
+  while (loop) {
+    if (node.left) {
+      depthFirstLog(cb, node.left);
+    }
+    if (node.right) {
+      depthFirstLog(cb, node.right);
+    }
+    loop = false;
+  }
 };
 
 BinarySearchTree.prototype.Node = function Node(value) {
