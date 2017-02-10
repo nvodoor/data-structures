@@ -13,8 +13,21 @@ Graph.prototype.addNode = function(value) {
 };
 
 // Return a boolean value indicating if the value passed to contains is represented in the graph.
-Graph.prototype.contains = function(node) {
-  
+Graph.prototype.contains = function(target) {
+
+  var exists = false;
+  var nodeSearch = function nodeSearch (node) {
+
+    if (node.value === target) {
+      return exists = true;
+    } else if (node.nodeList) {
+      node.nodeList.forEach(function(miniNode) {
+        nodeSearch(miniNode);
+      });
+    }
+  };
+  nodeSearch(this);
+  return exists;
 };
 
 // Removes a node from the graph.
