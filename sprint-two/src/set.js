@@ -15,7 +15,7 @@ setPrototype.add = function(item) {
 };
 
 setPrototype.contains = function(item) {
-  if (this[item]) {
+  if (this[item] === item) {
     return true;
   } else {
     return false;

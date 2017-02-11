@@ -1,0 +1,16 @@
+
+describe('binarySearchTree', function() {
+  var binarySearchTree;
+
+  beforeEach(function() {
+    binarySearchTree = new BinarySearchTree(5000000);
+  });
+
+  it('should add many values to the binary search tree', function() {
+    for (var i = 1; i < 10000000; i++) {
+      var num = Math.floor(Math.random() * 10000000);
+      binarySearchTree.insert(num);
+    }
+  });
+
+});
