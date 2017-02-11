@@ -41,9 +41,10 @@ BinarySearchTree.prototype.insert = function insert(nodeValue) {
 
 BinarySearchTree.prototype.contains = function contains(value) {
   var current = this;
-  var loop = true;
-  while (loop) {
-    if (value !== current.value) {
+  while (current) {
+    if (value === current.value) { 
+      return true;
+    } else {
       if (value > current.value && current.right) {
         current = current.right;
       } else if (value < current.value && current.left) {
@@ -51,8 +52,6 @@ BinarySearchTree.prototype.contains = function contains(value) {
       } else {
         return false;
       }
-    } else {
-      return true; 
     }
   }
 };
