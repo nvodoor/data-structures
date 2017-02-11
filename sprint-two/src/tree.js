@@ -35,7 +35,6 @@ treeMethods.contains = function(target) {
 };
 
 treeMethods.removeParent = function removeParent() {
-  // iterate over parents children
   var parent = this.parent;
   var node = this;
 
@@ -47,8 +46,13 @@ treeMethods.removeParent = function removeParent() {
   }, parent.children);
 };
 
-treeMethods.traverse = function traverse(cb) {
+treeMethods.traverse = function traverse(cb, node) {
+  node = node || this;
   
+  cb(node);
+  node.children.forEach(function(child) {
+    traverse(cb, child);
+  });
 };
 
 /*
