@@ -86,6 +86,23 @@ describe('linkedList', function() {
     expect(linkedList.tail.next).to.equal(null);
     expect(linkedList.tail.previous.value).to.equal(8);
     expect(linkedList.tail.previous.previous.value).to.equal(7);
-
   });
+
+  it('Should traverse list executing callback on each node', function() {
+    var array = [];
+    linkedList.addToTail(1);
+    linkedList.addToTail(2);
+    linkedList.addToTail(3);
+    linkedList.addToTail(4);
+    linkedList.addToTail(5);
+    linkedList.addToTail(6);
+    linkedList.addToTail(7);
+    linkedList.addToTail(8);
+    linkedList.addToTail(9);
+    linkedList.traverse(function(node) {
+      array.push(node.value);
+    });
+    expect(array).to.eql([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  });
+
 });

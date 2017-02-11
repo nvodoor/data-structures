@@ -54,7 +54,18 @@ var LinkedList = function() {
     this.head = newNode;
 
 
-  }
+  };
+
+
+  list.traverse = function traverse(cb) {
+    var node = this.head;
+
+    while (node) {
+      cb(node);
+      node = node.next;
+    }
+
+  };
 
   return list;
 };
