@@ -43,8 +43,11 @@ describe('linkedList', function() {
   it('should contain a value that was added', function() {
     linkedList.addToTail(4);
     linkedList.addToTail(5);
+    linkedList.addToTail(10);
+    linkedList.addToTail(7);
+    linkedList.addToTail(8);
     expect(linkedList.contains(4)).to.equal(true);
-    expect(linkedList.contains(5)).to.equal(true);
+    expect(linkedList.contains(8)).to.equal(true);
     expect(linkedList.contains(6)).to.equal(false);
   });
 
@@ -58,8 +61,15 @@ describe('linkedList', function() {
   it('Should link to next node', function() {
     linkedList.addToTail(1);
     linkedList.addToTail(2);
+    linkedList.addToTail(3);
+    linkedList.addToTail(4);
+    linkedList.addToTail(5);
+    linkedList.addToTail(6);
+    linkedList.addToTail(7);
+    linkedList.addToTail(8);
+    linkedList.addToTail(9);
     expect(linkedList.tail.next).to.equal(null);
-    expect(linkedList.head.next.value).to.equal(linkedList.tail.value);
+    expect(linkedList.head.next.next.next.next.value).to.equal(5);
   });
 
 
