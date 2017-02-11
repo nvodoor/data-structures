@@ -50,4 +50,18 @@ describe('tree', function() {
     expect(tree.contains(10)).to.equal(true);
   });
 
+  it('should correctly be linked to parent node', function() {
+    tree.addChild(2);
+    tree.children[0].addChild(4);
+    tree.children[0].children[0].addChild(6);
+    tree.children[0].children[0].children[0].addChild(8);
+    tree.children[0].children[0].children[0].children[0].addChild(10);
+    expect(tree.parent).to.equal(null);
+    console.log('newtest', tree.children[0]);
+    expect(tree.children[0].value).to.equal(2);
+    expect(tree.children[0].children[0].value).to.equal(4);
+    expect(tree.children[0].children[0].children[0].value).to.equal(6);
+
+});
+
 });
