@@ -27,19 +27,15 @@ var LinkedList = function() {
 
 
   list.contains = function(target, node) {
-    var loop = true;
     node = node || this.head;
 
-    if (node.value === target) {
-      console.log(1);
-      return true;
-    } else if (node.next) {
-      console.log(2);
-      list.contains(target, node.next);
-    } else {
-      console.log(3);
-      return false;
+    while (node) {
+      if (node.value === target) {
+        return true;
+      }
+      node = node.next;
     }
+    return false;
   };
 
   return list;
