@@ -58,17 +58,13 @@ BinarySearchTree.prototype.contains = function contains(value) {
 };
 
 BinarySearchTree.prototype.depthFirstLog = function depthFirstLog(cb, node) {
-  var loop = true;
   node = node || this;
   cb(node);
-  while (loop) {
-    if (node.left) {
-      depthFirstLog(cb, node.left);
-    }
-    if (node.right) {
-      depthFirstLog(cb, node.right);
-    }
-    loop = false;
+  if (node.left) {
+    depthFirstLog(cb, node.left);
+  }
+  if (node.right) {
+    depthFirstLog(cb, node.right);
   }
 };
 
