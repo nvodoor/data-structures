@@ -22,7 +22,7 @@ describe('linkedList', function() {
     linkedList.addToTail(5);
     expect(linkedList.tail.value).to.equal(5);
     linkedList.addToTail(6);
-    expect(linkedList.tail.value).to.equal(6);    
+    expect(linkedList.tail.value).to.equal(6);
     linkedList.addToTail(7);
     expect(linkedList.tail.value).to.equal(7);
   });
@@ -61,6 +61,7 @@ describe('linkedList', function() {
   it('Should link to next node starting at head', function() {
     linkedList.addToTail(1);
     linkedList.addToTail(2);
+    linkedList.addToHead(20);
     linkedList.addToTail(3);
     linkedList.addToTail(4);
     linkedList.addToTail(5);
@@ -69,7 +70,7 @@ describe('linkedList', function() {
     linkedList.addToTail(8);
     linkedList.addToTail(9);
     expect(linkedList.tail.next).to.equal(null);
-    expect(linkedList.head.next.next.next.next.value).to.equal(5);
+    expect(linkedList.head.next.next.next.next.next.value).to.equal(5);
   });
 
   it('Should link to previous node starting at tail', function() {
@@ -84,7 +85,7 @@ describe('linkedList', function() {
     linkedList.addToTail(9);
     expect(linkedList.tail.next).to.equal(null);
     expect(linkedList.tail.previous.value).to.equal(8);
+    expect(linkedList.tail.previous.previous.value).to.equal(7);
+
   });
-
-
 });

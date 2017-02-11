@@ -40,6 +40,22 @@ var LinkedList = function() {
     return false;
   };
 
+
+  list.addToHead = function addToHead(value) {
+    var newNode = new Node(value);
+
+    if (list.head === null) {
+      list.head = newNode;
+      list.tail = newNode;
+    }
+
+    newNode.next = this.head;
+    this.head.previous = newNode;
+    this.head = newNode;
+
+
+  }
+
   return list;
 };
 
