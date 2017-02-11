@@ -42,7 +42,6 @@ BinarySearchTree.prototype.insert = function insert(nodeValue) {
 BinarySearchTree.prototype.contains = function contains(value) {
   var current = this;
   var loop = true;
-
   while (loop) {
     if (value !== current.value) {
       if (value > current.value && current.right) {
@@ -61,7 +60,6 @@ BinarySearchTree.prototype.contains = function contains(value) {
 BinarySearchTree.prototype.depthFirstLog = function depthFirstLog(cb, node) {
   var loop = true;
   node = node || this;
-
   cb(node);
   while (loop) {
     if (node.left) {
