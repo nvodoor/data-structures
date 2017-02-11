@@ -37,17 +37,18 @@ treeMethods.contains = function(target) {
 treeMethods.removeParent = function removeParent() {
   // iterate over parents children
   var parent = this.parent;
+  var node = this;
 
   parent.children.reduce(function(acc, child, i) {
-    if (child.value === this.value) {
+    if (child.value === node.value) {
       acc.splice(i, 1);
     }
     return acc;
   }, parent.children);
-    // find node that called remove parent
-      // remove node from child list
+};
 
-  // set current nodes parent to null
+treeMethods.traverse = function traverse(cb) {
+  
 };
 
 /*

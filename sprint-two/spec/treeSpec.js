@@ -71,8 +71,12 @@ describe('tree', function() {
     tree.children[0].children[0].children[0].addChild(8);
     tree.children[0].children[0].children[0].children[0].addChild(9);
     expect(tree.contains(9)).to.equal(true);
+    tree.children[0].children[0].children[0];
     tree.children[0].children[0].children[0].removeParent();
     expect(tree.contains(6)).to.equal(true);
+    expect(tree.contains(7)).to.equal(false);
+    expect(tree.contains(8)).to.equal(false);
+    expect(tree.contains(9)).to.equal(false);
   });
 
 });
