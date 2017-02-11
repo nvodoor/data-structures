@@ -4,43 +4,35 @@ var BinarySearchTree = function(value) {
   this.right = null;
 };
 
-BinarySearchTree.prototype.left = function left() {
-  return this.left;
-};
-
-BinarySearchTree.prototype.right = function right() {
-  return this.right;
-};
-
 BinarySearchTree.prototype.insert = function insert(nodeValue) {
   var node = new Node(nodeValue);
 
   var current = this;
-  var loop = true;
 
-  while (loop) {
+  while (current) {
     if (node.value < current.value) {
       if (!current.left) {
         current.left = node;
-        loop = false;
+        return;
       } else {
         current = current.left;
       }
     } else if (node.value > current.value) {
       if (!current.right) {
         current.right = node;
-        loop = false;
+        return;
       } else {
         current = current.right;
       }
     } else {
-      loop = false;
+      return undefined;
     }
   }
 };
 
 BinarySearchTree.prototype.contains = function contains(value) {
   var current = this;
+
   while (current) {
     if (value === current.value) { 
       return true;
@@ -76,4 +68,7 @@ BinarySearchTree.prototype.Node = function Node(value) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ insert - log(n)
+ contains - log(n)
+ depthFirstLog - o(n)
  */
