@@ -34,8 +34,20 @@ treeMethods.contains = function(target) {
   return exists;
 };
 
-treeMethods.removeParent = function removeParent(value) {
+treeMethods.removeParent = function removeParent() {
+  // iterate over parents children
+  var parent = this.parent;
 
+  parent.children.reduce(function(acc, child, i) {
+    if (child.value === this.value) {
+      acc.splice(i, 1);
+    }
+    return acc;
+  }, parent.children);
+    // find node that called remove parent
+      // remove node from child list
+
+  // set current nodes parent to null
 };
 
 /*
