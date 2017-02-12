@@ -18,21 +18,18 @@ treeMethods.addChild = function(value) {
 };
 
 treeMethods.contains = function(target) {
-  var exists = false;
 
-  var childSearch = function childSearch (child) {
+  if (this.value === target) {
+    return true;
+  }
 
-    if (child.value === target) {
-      return exists = true;
-    } else if (child.children) {
-      child.children.forEach(function(kid) {
-        childSearch(kid);
-      });
+  return this.children.reduce(function(acc, child) {
+    if (child.contains(target)) {
+      acc = true;
     }
-  };
-  childSearch(this);
-  return exists;
-};
+    return acc;
+  }, false);
+};  
 
 treeMethods.removeParent = function removeParent() {
   var parent = this.parent;
@@ -47,12 +44,16 @@ treeMethods.removeParent = function removeParent() {
 };
 
 treeMethods.traverse = function traverse(cb, node) {
-  node = node || this;
   
   cb(node);
   node.children.forEach(function(child) {
     traverse(cb, child);
   });
+
+  // cb(this);
+  // this.children.reduce(function(acc, node) {
+  //   node.traverse(cb);
+  // }, cb);
 };
 
 /*
