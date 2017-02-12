@@ -44,6 +44,7 @@ treeMethods.removeParent = function removeParent() {
 };
 
 treeMethods.traverse = function traverse(cb, node) {
+  node = node || this;
   
   cb(node);
   node.children.forEach(function(child) {
